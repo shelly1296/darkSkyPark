@@ -54,7 +54,7 @@ from datetime import date
 
 # In[5]:
 
-dir = r'C:\Users\Adam Shelbourne\Uni\Physics\Astr310\Python\mu\daily\*'
+dir = r'../data/*.dat'
 names = ['UTCDateTime', 'LocalDateTime', 'Temperature', 'Counts', 'Frequency', 'MSAS']
 
 
@@ -68,13 +68,13 @@ nhrs = 15   # Number of hours to extend time grid
 
 #print  (glob.glob(r'C:\\Users\\Adam Shelbourne\\Uni\\Physics\\Astr310\\Python\\mu\\daily\\20*.dat'))
 
-numbfile = len(glob.glob(r'C:\\Users\\Adam Shelbourne\\Uni\\Physics\\Astr310\\Python\\mu\\daily\\20*.dat'))
+numbfile = len(glob.glob(r'../data/20*.dat'))
 print (numbfile)
 
 
 # In[8]:
 
-for infile in sorted(glob.glob(r'C:\\Users\\Adam Shelbourne\\Uni\\Physics\\Astr310\\Python\\mu\\daily\\20*.dat')):
+for infile in sorted(glob.glob(r'../data/20*.dat')):
    print (infile[69:77])
 
 
