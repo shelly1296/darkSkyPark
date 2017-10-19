@@ -9,29 +9,10 @@ import sys
 import glob
 import os
 
-
-# In[3]:
-
 dir = '../data/*'
-names = ['UTCDateTime', 'LocalDateTime', 'Temperature', 'Counts', 'Frequency', 'MSAS']
-print(glob.glob(dir))
-
-
-# In[9]:
-
-# Set the common time grid onto which each night is sampled. The common grid
-# is defined by the start time defined below, and the number of hours from that time
-beginh = 16 # Hour of start time (hour)
-beginm = 30 # Hour of start time (minute)
-nhrs = 15   # Number of hours to extend time grid
-
-#print  (glob.glob(r'C:\\Users\\Adam Shelbourne\\Uni\\Physics\\Astr310\\Python\\mu\\daily\\20*.dat'))
 
 numbfile = len(glob.glob('../data/20*.dat'))
 print (numbfile)
-
-
-# In[59]:
 
 javascript= '../html/js/darkskiesdata.js'
 f2=open(javascript,'w')
