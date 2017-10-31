@@ -9,29 +9,10 @@ import sys
 import glob
 import os
 
-
-# In[3]:
-
 dir = '../data/*'
-names = ['UTCDateTime', 'LocalDateTime', 'Temperature', 'Counts', 'Frequency', 'MSAS']
-print(glob.glob(dir))
-
-
-# In[9]:
-
-# Set the common time grid onto which each night is sampled. The common grid
-# is defined by the start time defined below, and the number of hours from that time
-beginh = 16 # Hour of start time (hour)
-beginm = 30 # Hour of start time (minute)
-nhrs = 15   # Number of hours to extend time grid
-
-#print  (glob.glob(r'C:\\Users\\Adam Shelbourne\\Uni\\Physics\\Astr310\\Python\\mu\\daily\\20*.dat'))
 
 numbfile = len(glob.glob('../data/20*.dat'))
 print (numbfile)
-
-
-# In[59]:
 
 javascript= '../html/js/darkskiesdata.js'
 f2=open(javascript,'w')
@@ -44,7 +25,7 @@ new Vue({\n \
       demoEvents:\n\
 	  [\n\n"))
 #loop through and write to file
-for infile in sorted(glob.glob('../data/20*.dat')):
+for infile in sorted(glob.glob('../demodata/mu_graph/20*.png')):
 
 
    currentFile = os.path.basename(infile)
@@ -57,10 +38,23 @@ for infile in sorted(glob.glob('../data/20*.dat')):
    f2.write(str(("desc: \'" + currentFile +"'\n" )))
    f2.write(str("},\n" ))
 
-
+#data file download?
+#root acess?
+#
 
 # In[ ]:
+for infile2 in sorted(glob.glob('../demodata/sso_graph/20*.png')):
 
+
+   currentFile2 = os.path.basename(infile2)
+
+
+   f2.write(str("{\n" ))
+   #print (("date:" + "\'" + (currentFile2[0:4])+ "/" + (currentFile[4:6]) + "/" + (currentFile[6:8])+ "\'"))
+   f2.write(str(("date:" + "\'" + (currentFile2[0:4])+ "/" + (currentFile2[4:6]) + "/" + (currentFile2[6:8])+ "\',\n")))
+   f2.write(str(("title: \'Siding Springs\',\n" )))
+   f2.write(str(("desc: \'" + currentFile2 +"'\n" )))
+   f2.write(str("},\n" ))
 #
 
 
