@@ -14,18 +14,14 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(args.accumulate(args.integers))
 
-javascript = r'C:\\Users\\Adam Shelbourne\\Uni\\Physics\\Astr310\\Python\\mu\\graph\\darkskiesdata.js'
+javascript = '../js/darkskiesdata.js'
 f2 = open(javascript, 'w')
 # Write Header first 7 lines
-f2.write(str("Vue.use(VueEventCalendar.default, {locale: \'en\', color: \'#4fc08d\'}) //hack here (.default) \
-new Vue({ \
-  el: \'#example\', \
-  data: function () { \
-    return { \
-      demoEvents:\
-	  ["))
+f2.write(str("var darkSkyEvents; \
+darkSkyEvents \
+    ["))
 # loop through and write to file
-for infile in sorted(glob.glob(r'C:\\Users\\Adam Shelbourne\\Uni\\Physics\\Astr310\\Python\\mu\\graph\\20*.png')):
+for infile in sorted(glob.glob('../html/images/20*.png')):
     currentFile = os.path.basename(infile)
 
     f2.write(str("{"))
@@ -43,9 +39,6 @@ f2.write(str(("desc: \'Well done for finding my easter egg!\'")))
 f2.write(str("}" ))
 #Write footer last 4 lines
 
-f2.write(str("]"))
-f2.write(str("}"))
-f2.write(str("}"))
-f2.write(str("}}"))
+f2.write(str("];"))
 
 f2.close()

@@ -17,13 +17,9 @@ print (numbfile)
 javascript= '../html/js/darkskiesdata.js'
 f2=open(javascript,'w')
 #Write Header first 7 lines
-f2.write(str("Vue.use(VueEventCalendar.default, {locale: \'en\', color: \'#4fc08d\'}) \n \
-new Vue({\n \
-  el: \'#example\',\n \
-  data: function () { \n\
-    return {\n \
-      demoEvents:\n\
-	  [\n\n"))
+f2.write(str("var darkSkyEvents; \
+darkSkyEvents \
+    ["))
 #loop through and write to file
 for infile in sorted(glob.glob('../demodata/mu_graph/20*.png')):
 
@@ -69,10 +65,7 @@ f2.write(str(("desc: \'Well done for finding my easter egg!\'")))
 f2.write(str("}\n\n" ))
 #Write footer last 4 lines
 
-f2.write(str("            ]\n"))
-f2.write(str("        }\n"))
-f2.write(str("    }\n"))
-f2.write(str("  }\n);\n"))
+f2.write(str("            ];\n"))
 
 f2.close()
 

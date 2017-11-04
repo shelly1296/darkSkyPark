@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.entry = './src/dark-sky-data-vue.js'
 
   module.exports.output = {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './html/js'),
     filename:'dark-sky-data-vue.js',
     library:'DarkSkyDataVue',
     libraryTarget: 'umd'
