@@ -1,4 +1,4 @@
-var darkSkyEvents; darkSkyEvents     [{
+var darkSkyEvents; darkSkyEvents   =  [{
 date:'2016/07/29',
 title: 'Macquarie Uni',
 desc: '20160729_120000_SQM_LE-mac_uni.png'
