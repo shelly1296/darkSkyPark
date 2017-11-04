@@ -18,7 +18,7 @@ javascript= '../html/js/darkskiesdata.js'
 f2=open(javascript,'w')
 #Write Header first 7 lines
 f2.write(str("var darkSkyEvents; \
-darkSkyEvents \
+darkSkyEvents = \
     ["))
 #loop through and write to file
 for infile in sorted(glob.glob('../demodata/mu_graph/20*.png')):
