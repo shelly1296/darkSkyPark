@@ -1,8 +1,10 @@
 var darkSkyEvents;
 darkSkyEvents   =  [{
-date:'2016/07/29',
+date:'2017/11/05',
 title: 'Macquarie Uni',
-desc: '20160729_120000_SQM_LE-mac_uni.png'
+desc: '20160729_120000_SQM_LE-mac_uni.png',
+  graph: 'images/mu_graph/20160729_120000_SQM_LE-mac_uni.png',
+  dataFile: 'data/20160729_120000_SQM_LE-mac_uni.dat'
 },
 {
 date:'2016/07/30',

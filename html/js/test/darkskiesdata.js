@@ -11,9 +11,11 @@ darkSkyEvents = [
         desc: '20160730_120000_SQM_LE-mac_uni.png'
     },
     {
-        date: '2016/07/31',
-        title: 'Macquarie Uni',
-        desc: '20160731_120000_SQM_LE-mac_uni.png'
+      date: '201/07/31',
+      title: 'Macquarie Uni',
+      desc: '20160731_120000_SQM_LE-mac_uni.png',
+      graph: 'demodata/mu_graph/20160731_120000_SQM_LE-mac_uni.png',
+      dataFile: 'data/20160731_120000_SQM_LE-mac_uni.dat'
     },
     {
         date: '2016/08/01',

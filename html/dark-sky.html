@@ -33,65 +33,77 @@
       <div v-for="(event, index) in props.showEvents" class="event-item">
         <h3 class="title">{{index+1}}. {{event.title}}
           <div class="go-right">
-          <popover title="Data" trigger="hover">
-            <button type="button" class="btn btn-primary" id="hover-trigger-data-index+1"
-                    @click="openDataDialog=true;dialogData=event.desc;dialogDataTitle=event.title">
-              <span class="glyphicon glyphicon-list"></span>
-            </button>
-            <div slot="popover">
-              <p>{{event.desc}}</p>
-            </div>
-          </popover>
+            <popover title="Data" trigger="hover">
+              <button type="button" class="btn btn-primary" id="hover-trigger-data-index+1"
+                      @click="openDataDialog=true;dialogData=event.dataFile;dialogDataTitle=event.title">
+                <span class="glyphicon glyphicon-list"></span>
+              </button>
+              <div slot="popover">
+                <p>{{ event.dataFile }}</p>
+              </div>
+            </popover>
 
-      <popover title="Graph" trigger="hover">
-        <button type="button" class="btn btn-primary" id="hover-trigger-graph-index+1"
-                @click="openGraphDialog=true;dialogGraph=event.desc;dialogGraphTitle=event.title">
-          <span class="glyphicon glyphicon-picture"></span>
-        </button>
-        <div slot="popover">
-          <p>{{event.desc}}</p>
-        </div>
-      </popover>
-      </div>
+            <popover title="Graph" trigger="hover">
+              <button type="button" class="btn btn-primary" id="hover-trigger-graph-index+1"
+                      @click="openGraphDialog=true;dialogGraph=event.graph;dialogGraphTitle=event.title">
+                <span class="glyphicon glyphicon-picture"></span>
+              </button>
+              <div slot="popover">
+                <p>{{event.graph}}</p>
+              </div>
+            </popover>
+          </div>
         </h3>
 
-      <template>
-            <section>
-              <modal v-model="openGraphDialog" size="lg">
-                <span slot="title"><span class="glyphicon glyphicon-picture"></span> {{dialogGraphTitle}} </span>
-                  <img :src="'images/' + dialogGraph"/>
-                    <div slot="footer">
-                      <button type="button" class="btn btn-default" @click="openGraphDialog=false">Ok</button>
-                    </div>
-              </modal>
-            </section>
-          </template>
-      <template>
-        <section>
-          <modal v-model="openDataDialog" size="lg">
-            <span slot="title"><span class="glyphicon glyphicon-list"></span> {{dialogDataTitle}} </span>
-            <img :src="'images/' + dialogData"/>
-            <div slot="footer">
-              <button type="button" class="btn btn-default" @click="openDataDialog=false">Ok</button>
-            </div>
-          </modal>
-        </section>
-      </template>
+        <template>
+          <section>
+            <modal v-model="openGraphDialog" size="lg">
+              <span slot="title"><span class="glyphicon glyphicon-picture"></span> {{dialogGraphTitle}} </span>
+              <span v-if="openGraphDialog">
+                  <img :src="dialogGraph"/>
+                </span>
+              <div slot="footer">
+                <button type="button" class="btn btn-default" @click="openGraphDialog=false">Ok</button>
+                <!--
+              coming soon...
+              <button type="button" class="btn btn-success" @click="openGraphDialog=false">Download</button>
+              -->
+              </div>
+            </modal>
+          </section>
+        </template>
+        <template>
+          <section>
+            <modal v-model="openDataDialog" size="lg">
+              <span slot="title"><span class="glyphicon glyphicon-list"></span> {{dialogDataTitle}} </span>
+              <span v-if="openDataDialog">
+                {{ getDataFile(dialogData) }}
+                <pre>{{dialogDataContents}}</pre>
+              </span>
+              <div slot="footer">
+                <button type="button" class="btn btn-default" @click="openDataDialog=false">Ok</button>
+                <!--
+                coming soon...
+                <button type="button" class="btn btn-success" @click="openDataDialog=false">Download</button>
+                -->
+              </div>
+            </modal>
+          </section>
+        </template>
       </div>
     </template>
-</vue-event-calendar>
+  </vue-event-calendar>
 </div>
-<!--
-<script type="text/javascript" src="js/dark-sky-data-vue.js"></script>
--->
-<script type="text/javascript" src="js/test/darkskiesdata.js"></script>
-<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<script type="text/javascript" src="js/darkskiesdata.js"></script>
+<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/vue-event-calendar/dist/index.js"></script>
 <script type="text/javascript" src="https://unpkg.com/uiv/dist/uiv.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script type="text/javascript">
   Vue.use(VueEventCalendar.default, {locale: 'en', color: '#4fc08d'});
-  new Vue({
+  var vm = new Vue({
     el: '#dspapp',
     data: function () {
       return {
@@ -102,15 +114,31 @@
         dialogGraph: "No Graph",
         openDataDialog: false,
         dialogDataTitle: "Uni",
-        dialogData: "No Graph"
+        dialogData: "No Data File",
+        dialogDataContents: "No Contents"
       }
+    },
+    methods: {
+      getDataFile(dataFileUrl) {
+        console.log("[DSP] Calling for data file: data[" + dataFileUrl + "]");
+        if (dataFileUrl !== "No Data File") {
+          axios.get(dataFileUrl, {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+            }
+          }).then((response) => {
+            console.log("[DSP]: AXIOS call ok for [" + dataFileUrl + "]");
+            vm.dialogDataContents = response.data; //results;
+            console.log("[DSP]: Got the following File contents: [" + vm.dialogDataContents + "]");
+            return vm.dialogDataContents;
+          }).catch(error => {
+            console.log(error);
+          });
+        }
+      }
+
     }
   });
-
-  function getDataFileName(graphFileName) {
-    var retFile = graphFileName.slice(0, -4) + '.dat';
-    return retFile;
-  };
 </script>
 </body>
 </html>
