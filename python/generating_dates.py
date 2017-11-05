@@ -36,6 +36,9 @@ for infile in sorted(glob.glob('../demodata/mu_graph/20*.png')):
    f2.write(str(("date:" + "\'" + (currentFile[0:4])+ "/" + (currentFile[4:6]) + "/" + (currentFile[6:8])+ "\',\n")))
    f2.write(str(("title: \'Macquarie Uni\',\n" )))
    f2.write(str(("desc: \'" + currentFile +"'\n" )))
+   f2.write(str(("graph: \'" + infile + "'\n")))
+   f2.write(str(("dataFile: \'" + "../data/" + (currentFile[0:24]) + "*.dat" "'\n")))
+   print(currentFile[0:24])
    f2.write(str("},\n" ))
 
 # This one is for SSO
@@ -50,6 +53,9 @@ for infile2 in sorted(glob.glob('../demodata/sso_graph/20*.png')):
    f2.write(str(("date:" + "\'" + (currentFile2[0:4])+ "/" + (currentFile2[4:6]) + "/" + (currentFile2[6:8])+ "\',\n")))
    f2.write(str(("title: \'Siding Springs\',\n" )))
    f2.write(str(("desc: \'" + currentFile2 +"'\n" )))
+   f2.write(str(("graph: \'" + infile2 + "'\n")))
+   f2.write(str(("dataFile: \'" + "../data/" + (currentFile2[0:24]) + "*.dat" "'\n")))#
+
    f2.write(str("},\n" ))
 
 # Template below
