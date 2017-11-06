@@ -35,10 +35,10 @@ for infile in sorted(glob.glob('../demodata/mu_graph/20*.png')):
    #print (("date:" + "\'" + (currentFile[0:4])+ "/" + (currentFile[4:6]) + "/" + (currentFile[6:8])+ "\'"))
    f2.write(str(("date:" + "\'" + (currentFile[0:4])+ "/" + (currentFile[4:6]) + "/" + (currentFile[6:8])+ "\',\n")))
    f2.write(str(("title: \'Macquarie Uni\',\n" )))
-   f2.write(str(("desc: \'" + currentFile +"'\n" )))
-   f2.write(str(("graph: \'" + "images/" + currentFile + "'\n")))
-   f2.write(str(("dataFile: \'" + "data/" + (currentFile[0:24]) + "*.dat" "'\n")))
-   f2.write(str("},\n" ))
+   f2.write(str(("desc: \'" + currentFile +"',\n" )))
+   f2.write(str(("graph: \'" + "images/" + currentFile + "',\n")))
+   f2.write(str(("dataFile: \'" + "data/" + currentFile.replace(".png", ".dat") + "'\n")))
+   f2.write(str("},\n"))
 
 # This one is for SSO
 for infile2 in sorted(glob.glob('../demodata/sso_graph/20*.png')):
@@ -51,9 +51,9 @@ for infile2 in sorted(glob.glob('../demodata/sso_graph/20*.png')):
    #print (("date:" + "\'" + (currentFile2[0:4])+ "/" + (currentFile[4:6]) + "/" + (currentFile[6:8])+ "\'"))
    f2.write(str(("date:" + "\'" + (currentFile2[0:4])+ "/" + (currentFile2[4:6]) + "/" + (currentFile2[6:8])+ "\',\n")))
    f2.write(str(("title: \'Siding Springs\',\n" )))
-   f2.write(str(("desc: \'" + currentFile2 +"'\n" )))
-   f2.write(str(("graph: \'" + "images/"+ currentFile2 + "'\n")))
-   f2.write(str(("dataFile: \'" + "data/" + (currentFile2[0:24]) + "*.dat" "'\n")))#
+   f2.write(str(("desc: \'" + currentFile2 +"',\n" )))
+   f2.write(str(("graph: \'" + "images/"+ currentFile2 + "',\n")))
+   f2.write(str(("dataFile: \'" + "data/" + currentFile2.replace(".png", ".dat") + "'\n")))#
    f2.write(str("},\n" ))
 
 # Template below
