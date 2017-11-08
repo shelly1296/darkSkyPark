@@ -59,20 +59,24 @@ for infile2 in sorted(glob.glob('../demodata/sso_graph/20*.png')):
 # Template below
    # If you ever need to add any more locations all you need to do is follow this template, you will need to chang the
    # path in the glob bellow to the location of the new images, which will likely only mean changing the sso_graph to the
-   # new folder being used
+   # new folder being used. Must also change the infile2 to infilen n being an new number and the same wiht currentFile
 
    # IMPORTANT: the indents must be kept as they are so only remove the hashes, otherwise the loop will not work
 
 #for infile2 in sorted(glob.glob('../demodata/sso_graph/20*.png')):
 
 
-#  currentFile2 = os.path.basename(infile2)
+#   currentFile2 = os.path.basename(infile2)
 
-#  f2.write(str("{\n" ))
-#  f2.write(str(("date:" + "\'" + (currentFile2[0:4])+ "/" + (currentFile2[4:6]) + "/" + (currentFile2[6:8])+ "\',\n")))
-#  f2.write(str(("title: \'Insert Name of new location\',\n" )))  #This is the line you edit, keep the rest the same
-#  f2.write(str(("desc: \'" + currentFile2 +"'\n" )))
-#  f2.write(str("},\n" ))
+
+ #  f2.write(str("{\n" ))
+ # #print (("date:" + "\'" + (currentFile2[0:4])+ "/" + (currentFile[4:6]) + "/" + (currentFile[6:8])+ "\'"))
+ #  f2.write(str(("date:" + "\'" + (currentFile2[0:4])+ "/" + (currentFile2[4:6]) + "/" + (currentFile2[6:8])+ "\',\n")))
+ #  f2.write(str(("title: \'(LOCATION)\',\n" )))
+ #  f2.write(str(("desc: \'" + currentFile2 +"',\n" )))
+ #  f2.write(str(("graph: \'" + "images/"+ currentFile2 + "',\n")))
+ #  f2.write(str(("dataFile: \'" + "data/" + currentFile2.replace(".png", ".dat") + "'\n")))#
+ #  f2.write(str("},\n" ))
 
 
 #######################################################################################################################
